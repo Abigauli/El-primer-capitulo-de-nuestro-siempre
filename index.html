@@ -1,411 +1,553 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El primer capítulo de nuestro siempre ❤️</title>
 
-  <title>El primer capítulo de nuestro siempre 💗</title>
+<style>
+* {
+    box-sizing: border-box;
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+    background: linear-gradient(135deg, #fff0f6, #f5e9ff);
+    color: #5b3b50;
+    overflow-x: hidden;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+body::before {
+    content: "♡  ✦  ♡  ✧  ♡  ✦  ♡";
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    color: rgba(170, 105, 145, 0.25);
+    letter-spacing: 18px;
+    pointer-events: none;
+}
 
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-      background: linear-gradient(
-        135deg,
-        #fff0f6,
-        #f7e8ff,
-        #eee8ff,
-        #ffeaf3
-      );
-      color: #5b4054;
-    }
+.screen {
+    min-height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 18px;
+}
 
-    /* Fondo de la portada */
-    .portada {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 30px 20px;
-      position: relative;
-      overflow: hidden;
-    }
+.screen.active {
+    display: flex;
+}
 
-    /* Capa suave de luz */
-    .brillo {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      background: rgba(255, 255, 255, 0.45);
-      border-radius: 50%;
-      filter: blur(80px);
-      animation: respirar 6s ease-in-out infinite;
-    }
+.card {
+    width: min(850px, 95%);
+    background: rgba(255,255,255,0.88);
+    border: 1px solid rgba(160,100,140,0.18);
+    border-radius: 30px;
+    padding: 45px 35px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(110,70,100,0.15);
+    animation: aparecer 0.8s ease;
+}
 
-    @keyframes respirar {
-      0%, 100% {
-        transform: scale(0.9);
-        opacity: 0.5;
-      }
-
-      50% {
-        transform: scale(1.1);
-        opacity: 0.8;
-      }
-    }
-
-    /* Contenido */
-    .contenido {
-      position: relative;
-      z-index: 5;
-      max-width: 750px;
-      animation: aparecer 2s ease;
-    }
-
-    @keyframes aparecer {
-      from {
+@keyframes aparecer {
+    from {
         opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
+        transform: translateY(20px);
+    }
+    to {
         opacity: 1;
         transform: translateY(0);
-      }
     }
+}
 
-    .pequeno {
-      font-size: 17px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #a36b91;
-      margin-bottom: 20px;
-    }
+h1 {
+    font-size: clamp(34px, 7vw, 62px);
+    margin: 10px 0 20px;
+    color: #8c4d73;
+}
 
-    h1 {
-      font-size: clamp(42px, 9vw, 78px);
-      line-height: 1.05;
-      color: #8e5278;
-      margin-bottom: 25px;
-      font-weight: normal;
-      text-shadow: 0 5px 20px rgba(142, 82, 120, 0.15);
-    }
+h2 {
+    color: #9a547c;
+    font-size: 30px;
+}
 
-    .corazon {
-      font-size: 45px;
-      display: block;
-      margin: 10px 0 20px;
-      animation: latido 1.8s ease-in-out infinite;
-    }
+p {
+    font-size: 18px;
+    line-height: 1.8;
+}
 
-    @keyframes latido {
-      0%, 100% {
+.subtitle {
+    font-size: 20px;
+    font-style: italic;
+    color: #89657b;
+}
+
+.heart {
+    font-size: 60px;
+    animation: latido 1.5s infinite;
+}
+
+@keyframes latido {
+    0%, 100% {
         transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.18);
-      }
     }
-
-    .frase {
-      font-size: 21px;
-      line-height: 1.7;
-      max-width: 620px;
-      margin: 0 auto 35px;
-      color: #684e61;
+    50% {
+        transform: scale(1.12);
     }
+}
 
-    .dedicatoria {
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      letter-spacing: 1px;
-      color: #a36b91;
-      margin-bottom: 35px;
-    }
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 14px 25px;
+    margin: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #b96d99;
+    color: white;
+    box-shadow: 0 8px 20px rgba(120,70,100,0.2);
+    transition: 0.25s;
+}
 
-    /* Espacio para foto */
-    .foto {
-      width: 230px;
-      height: 230px;
-      margin: 0 auto 35px;
-      border-radius: 50%;
-      border: 7px solid rgba(255,255,255,0.8);
-      box-shadow:
-        0 10px 35px rgba(126, 78, 108, 0.18),
-        0 0 0 8px rgba(255,255,255,0.25);
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(120,70,100,0.28);
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.secondary {
+    background: #ead6e5;
+    color: #704b62;
+}
 
-      background: linear-gradient(
-        135deg,
-        #f8d8e9,
-        #e6d6f5
-      );
+.letters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+}
 
-      overflow: hidden;
-    }
+.letter-button {
+    min-height: 100px;
+    background: linear-gradient(135deg, #fff7fb, #f5e8f2);
+    color: #754c66;
+    border: 1px solid #ead0df;
+}
 
-    .foto span {
-      font-size: 60px;
-    }
+.letter-button span {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
 
-    /* Botón */
-    .boton {
-      display: inline-block;
-      padding: 16px 32px;
-      border-radius: 50px;
-      background: linear-gradient(
-        135deg,
-        #c47ba7,
-        #9b6bb0
-      );
-      color: white;
-      text-decoration: none;
-      font-family: Arial, sans-serif;
-      font-size: 15px;
-      letter-spacing: 1px;
-      box-shadow: 0 10px 25px rgba(130, 82, 125, 0.25);
-      transition: all 0.3s ease;
-    }
+.letter-content {
+    text-align: left;
+    max-height: 62vh;
+    overflow-y: auto;
+    padding: 10px;
+}
 
-    .boton:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 15px 30px rgba(130, 82, 125, 0.35);
-    }
+.letter-content p {
+    white-space: pre-line;
+}
 
-    /* Corazones flotando */
-    .corazones {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
+.placeholder {
+    margin: 25px auto;
+    padding: 35px;
+    border: 2px dashed #d8adc6;
+    border-radius: 22px;
+    background: #fff8fc;
+    color: #987087;
+}
 
-    .corazones span {
-      position: absolute;
-      bottom: -50px;
-      font-size: 20px;
-      opacity: 0.45;
-      animation: subir linear infinite;
-    }
+.small {
+    font-size: 14px;
+    opacity: 0.75;
+}
 
-    .corazones span:nth-child(1) {
-      left: 8%;
-      animation-duration: 9s;
-      animation-delay: 1s;
-    }
+.hidden {
+    display: none;
+}
 
-    .corazones span:nth-child(2) {
-      left: 20%;
-      animation-duration: 12s;
-      animation-delay: 3s;
-    }
+.fade {
+    animation: aparecer 0.7s ease;
+}
 
-    .corazones span:nth-child(3) {
-      left: 35%;
-      animation-duration: 10s;
-      animation-delay: 0s;
-    }
-
-    .corazones span:nth-child(4) {
-      left: 52%;
-      animation-duration: 14s;
-      animation-delay: 2s;
-    }
-
-    .corazones span:nth-child(5) {
-      left: 68%;
-      animation-duration: 11s;
-      animation-delay: 4s;
-    }
-
-    .corazones span:nth-child(6) {
-      left: 82%;
-      animation-duration: 13s;
-      animation-delay: 1s;
-    }
-
-    .corazones span:nth-child(7) {
-      left: 92%;
-      animation-duration: 9s;
-      animation-delay: 5s;
-    }
-
-    @keyframes subir {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-      }
-
-      15% {
-        opacity: 0.5;
-      }
-
-      85% {
-        opacity: 0.4;
-      }
-
-      100% {
-        transform: translateY(-110vh) rotate(25deg);
-        opacity: 0;
-      }
-    }
-
-    /* Estrellas */
-    .estrellita {
-      position: absolute;
-      color: white;
-      font-size: 15px;
-      animation: brilloEstrella 2s ease-in-out infinite alternate;
-    }
-
-    .e1 {
-      top: 15%;
-      left: 12%;
-    }
-
-    .e2 {
-      top: 25%;
-      right: 14%;
-      animation-delay: 1s;
-    }
-
-    .e3 {
-      bottom: 20%;
-      left: 18%;
-      animation-delay: 0.5s;
-    }
-
-    .e4 {
-      bottom: 15%;
-      right: 20%;
-      animation-delay: 1.5s;
-    }
-
-    @keyframes brilloEstrella {
-      from {
-        opacity: 0.2;
-        transform: scale(0.8);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1.3);
-      }
-    }
-
-    /* Adaptación para celular */
-    @media (max-width: 600px) {
-
-      .portada {
-        padding: 25px 18px;
-      }
-
-      .pequeno {
-        font-size: 13px;
-        letter-spacing: 2px;
-      }
-
-      h1 {
-        font-size: 45px;
-      }
-
-      .frase {
-        font-size: 18px;
-        line-height: 1.6;
-      }
-
-      .foto {
-        width: 190px;
-        height: 190px;
-      }
-
-      .foto span {
-        font-size: 50px;
-      }
-
-      .boton {
-        padding: 15px 25px;
-      }
-    }
-  </style>
+footer {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #9b788d;
+}
+</style>
 </head>
 
 <body>
 
-  <section class="portada">
+<!-- PORTADA -->
+<section id="inicio" class="screen active">
+    <div class="card">
+        <div class="heart">♡</div>
 
-    <div class="brillo"></div>
+        <h1>El primer capítulo<br>de nuestro siempre</h1>
 
-    <!-- Corazones flotantes -->
-    <div class="corazones">
-      <span>♡</span>
-      <span>♥️</span>
-      <span>♡</span>
-      <span>♥️</span>
-      <span>♡</span>
-      <span>♥️</span>
-      <span>♡</span>
+        <p class="subtitle">
+            Una historia que comenzó de la manera más inesperada...
+        </p>
+
+        <p>
+            Para Uriel,<br>
+            con todo mi amor. 🤍
+        </p>
+
+        <button onclick="mostrar('cartas')">
+            Abrir nuestros recuerdos ♡
+        </button>
+
+        <footer>
+            19.08.2025 — ∞
+        </footer>
     </div>
+</section>
 
-    <!-- Estrellitas -->
-    <div class="estrellita e1">✦</div>
-    <div class="estrellita e2">✧</div>
-    <div class="estrellita e3">✦</div>
-    <div class="estrellita e4">✧</div>
 
-    <div class="contenido">
+<!-- MENU DE CARTAS -->
+<section id="cartas" class="screen">
+    <div class="card">
 
-      <div class="pequeno">
-        19 de agosto · 2026
-      </div>
+        <h2>💌 Nuestros recuerdos</h2>
 
-      <span class="corazon">♡</span>
+        <p>
+            Doce cartas para doce meses,
+            doce pedacitos de nuestra historia. 🤍
+        </p>
 
-      <h1>
-        El primer capítulo<br>
-        de nuestro siempre
-      </h1>
+        <div class="letters">
 
-      <p class="frase">
-        Un año puede parecer poco tiempo para el mundo,
-        pero contigo ha sido suficiente para crear recuerdos
-        que quiero guardar para toda la vida.
-      </p>
+            <button class="letter-button" onclick="abrirCarta(1)">
+                <span>📖</span>
+                Había una vez...
+            </button>
 
-      <div class="foto">
-        <span>📷</span>
-      </div>
+            <button class="letter-button" onclick="abrirCarta(2)">
+                <span>🌙</span>
+                Cuando me extrañes
+            </button>
 
-      <p class="dedicatoria">
-        Para Uriel, con todo mi amor.
-      </p>
+            <button class="letter-button" onclick="abrirCarta(3)">
+                <span>👀</span>
+                Cuando quieras saber qué veo cuando te miro
+            </button>
 
-      <a href="#recuerdos" class="boton">
-        Abrir nuestro recuerdo 💌
-      </a>
+            <button class="letter-button" onclick="abrirCarta(4)">
+                <span>❤️</span>
+                Por qué te amo
+            </button>
+
+            <button class="letter-button" onclick="abrirCarta(5)">
+                <span>🤍</span>
+                Cuando hayamos tenido una pelea
+            </button>
+
+            <button class="letter-button" onclick="abrirCarta(6)">
+                <span>🌌</span>
+                Cuando pienses en nuestro futuro
+            </button>
+
+            <button class="letter-button" onclick="abrirCarta(7)">
+                <span>🤍</span>
+                Cuando dudes de nosotros
+            </button>
+
+            <button class="letter-button" onclick="abrirCarta(8)">
+                <span>🎶</span>
+                Cuando escuches nuestras canciones
+            </button>
+
+            <button class="letter-button" onclick="abrirCarta(9)">
+                <span>🌙</span>
+                Cuando no puedas dormir
+            </button>
+
+            <button class="letter-button" onclick="abrirCarta(10)">
+                <span>🌷</span>
+                Para ti y las personas que amas
+            </button>
+
+            <button class="letter-button" onclick="abrirCarta(11)">
+                <span>🏰</span>
+                La batalla por nuestro siempre
+            </button>
+
+            <button class="letter-button" onclick="abrirCarta(12)">
+                <span>📸</span>
+                Nuestros recuerdos
+            </button>
+
+        </div>
+
+        <br>
+
+        <button class="secondary" onclick="mostrar('inicio')">
+            ← Volver
+        </button>
+    </div>
+</section>
+
+
+<!-- CARTAS -->
+<section id="carta" class="screen">
+    <div class="card">
+
+        <div id="contenidoCarta" class="letter-content"></div>
+
+        <button class="secondary" onclick="mostrar('cartas')">
+            ← Volver a las cartas
+        </button>
 
     </div>
+</section>
 
-  </section>
 
-  <!-- Próximamente agregaremos aquí nuestras 12 cartas -->
-  <section id="recuerdos"></section>
+<script>
+
+const cartas = {
+
+1: `
+<h2>📖 Había una vez...</h2>
+
+<p>
+Una historia que no empezó con magia, sino con la suerte de encontrarnos.
+
+Esta carta será el lugar donde irá nuestra historia completa desde aquel día en Roblox, cuando una niña entró a jugar 99 Noches sin imaginar que terminaría encontrando al amor de su vida.
+
+❤️ Aquí irá tu carta completa.
+</p>
+
+<div class="placeholder">
+📸 Aquí podremos colocar fotografías de esta etapa.
+</div>
+`,
+
+2: `
+<h2>🌙 Cuando me extrañes...</h2>
+
+<p>
+Esta carta será para esos momentos en los que la distancia pese un poquito más.
+
+Aquí irá tu carta completa sobre las marquesitas, los panuchos, la hamaca, las noches juntos y todos esos recuerdos que quieres que Uriel reviva cuando te extrañe.
+</p>
+
+<div class="placeholder">
+📸 Aquí irá una fotografía especial.
+</div>
+`,
+
+3: `
+<h2>👀 Cuando quieras saber qué veo cuando te miro...</h2>
+
+<p>
+Aquí irá tu carta completa sobre todas esas cosas que ves cuando miras a Uriel: sus muecas, sus gestos, sus ocurrencias y todas esas pequeñas cosas que hacen que lo mires con tanto amor.
+</p>
+
+<div class="placeholder">
+✨ Aquí colocaremos animaciones bonitas y una fotografía.
+</div>
+`,
+
+4: `
+<h2>❤️ Por qué te amo...</h2>
+
+<p>
+Aquí irá tu carta completa.
+
+Por ahora dejamos preparado el espacio para conservar exactamente tus palabras.
+</p>
+
+<div class="placeholder">
+❤️ Fondo especial rojo vino, corazones y destellos discretos.
+</div>
+`,
+
+5: `
+<h2>🤍 Cuando hayamos tenido una pelea</h2>
+
+<p>
+Aquí irá tu carta completa sobre recordar que ustedes están del mismo lado, incluso cuando exista una discusión.
+
+“Somos nosotros contra el problema, no tú contra mí.”
+</p>
+
+<div class="placeholder">
+🤍 Aquí podremos agregar una pequeña animación al final.
+</div>
+`,
+
+6: `
+<h2>🌌 Cuando pienses en nuestro futuro</h2>
+
+<p>
+Aquí irá tu carta completa sobre el futuro que imaginas junto a Uriel y sobre Neythan, sus sueños, viajes, aventuras y todo lo que todavía quieren vivir.
+</p>
+
+<div class="placeholder">
+📸 Aquí irá la fotografía de ustedes tres.
+</div>
+`,
+
+7: `
+<h2>🤍 Cuando dudes de nosotros</h2>
+
+<p>
+Aquí irá tu carta completa sobre elegir a Uriel y seguir creyendo en la historia que comenzaron juntos.
+</p>
+`,
+
+8: `
+<h2>🎶 Cuando escuches nuestras canciones</h2>
+
+<p>
+Aquí estarán nuestras canciones y cada una tendrá su propio espacio.
+</p>
+
+<div class="placeholder">
+🎵 Aquí colocaremos los enlaces de Spotify.
+<br><br>
+Contigo — Karol G<br>
+Es verdad — Daniel, me estás matando<br>
+Patadas de ahogado — HUMBE & LATIN MAFIA<br>
+Neo, neo — LATIN MAFIA & rusowsky<br>
+Y como te digo que — LATIN MAFIA<br>
+Te estoy correteando — LATIN MAFIA<br>
+Veinte — HUMBE<br>
+Harry Stamper — HUMBE<br>
+Tu manta — Milo J<br>
+Ojalá — Milo J & Bhavi<br>
+Náufragos — Rauw Alejandro<br>
+Amar de nuevo — Rauw Alejandro
+</div>
+`,
+
+9: `
+<h2>🌙 Cuando no puedas dormir</h2>
+
+<p>
+Aquí irá tu carta completa para esas noches en las que Uriel no pueda dormir y necesite recordar que alguien lo está pensando y amando desde lejos.
+</p>
+
+<div class="placeholder">
+🌙 Aquí colocaremos animaciones suaves de estrellas.
+</div>
+`,
+
+10: `
+<h2>🌷 Para ti y las personas que amas</h2>
+
+<p>
+Aquí irá tu carta completa sobre tus deseos para Uriel, su mamá, su abuelita, su abuelito y su hermanita.
+</p>
+
+<div class="placeholder">
+🖼️ AQUÍ IRÁ LA IMAGEN ESPECIAL DE ESTA CARTA.
+</div>
+`,
+
+11: `
+<h2>🏰 La batalla por nuestro siempre</h2>
+
+<p>
+Aquí estará nuestro juego.
+
+Una arena inspirada en Clash Royale,
+con Abigail en la torre azul y Uriel en la torre roja.
+</p>
+
+<div class="placeholder">
+🏰 EL JUEGO SE PROGRAMARÁ AQUÍ.
+<br><br>
+💗 Mini P.E.K.K.A.<br>
+⚔️ Valquiria<br>
+🎯 Duende Lanzadardos<br>
+🐗 Montapuercos<br>
+😭 Príncipe Oscuro llorando<br>
+😂 Jijijija
+</div>
+
+<p>
+🌫️ El enemigo final será:
+<br>
+<strong>LA DISTANCIA</strong>
+</p>
+`,
+
+12: `
+<h2>📸 Nuestros recuerdos</h2>
+
+<p>
+Después de todas estas palabras...
+quedaron los recuerdos. 🤍
+</p>
+
+<div class="placeholder">
+📸 FOTO 1 — Aquí irá una fotografía.
+</div>
+
+<div class="placeholder">
+📸 FOTO 2 — Aquí irá una fotografía.
+</div>
+
+<div class="placeholder">
+📸 FOTO 3 — Aquí irá una fotografía.
+</div>
+
+<div class="placeholder">
+📸 FOTO 4 — Aquí irá una fotografía.
+</div>
+
+<p>
+✨ Aquí iremos agregando todas nuestras fotografías,
+música y pequeños recuerdos.
+</p>
+
+<h2>
+Nuestro siempre todavía está comenzando. 🤍
+</h2>
+
+<p>
+19.08.2025 — ∞
+</p>
+`
+
+};
+
+
+function mostrar(id) {
+
+    document.querySelectorAll('.screen').forEach(function(seccion) {
+        seccion.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+function abrirCarta(numero) {
+
+    document.getElementById('contenidoCarta').innerHTML = cartas[numero];
+
+    mostrar('carta');
+}
+
+</script>
 
 </body>
 </html>
