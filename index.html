@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>El primer capítulo de nuestro siempre ❤️</title>
 
     <style>
@@ -21,17 +22,24 @@
 
         .pantalla {
             min-height: 100vh;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             padding: 30px 20px;
             text-align: center;
         }
 
-        .portada {
-            max-width: 650px;
-            padding: 45px 30px;
-            background: rgba(255, 255, 255, 0.75);
+        .pantalla.activa {
+            display: flex;
+        }
+
+        .portada,
+        .menu-cartas,
+        .carta {
+            width: 100%;
+            max-width: 750px;
+            padding: 35px 28px;
+            background: rgba(255, 255, 255, 0.82);
             border-radius: 30px;
             box-shadow: 0 15px 45px rgba(120, 70, 110, 0.18);
         }
@@ -41,9 +49,19 @@
             margin-bottom: 20px;
         }
 
+        h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
         p {
             font-size: 18px;
             line-height: 1.8;
+            text-align: left;
+        }
+
+        .centro {
+            text-align: center;
         }
 
         .corazon {
@@ -53,7 +71,7 @@
 
         .boton {
             margin-top: 25px;
-            padding: 16px 28px;
+            padding: 15px 25px;
             border: none;
             border-radius: 50px;
             background: #b85c8b;
@@ -66,6 +84,44 @@
 
         .boton:hover {
             transform: scale(1.05);
+        }
+
+        .cartas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .carta-boton {
+            padding: 18px;
+            border: none;
+            border-radius: 20px;
+            background: #fff5fa;
+            color: #5b3b50;
+            font-family: inherit;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(120, 70, 110, 0.12);
+            transition: transform 0.2s;
+        }
+
+        .carta-boton:hover {
+            transform: translateY(-4px);
+        }
+
+        .volver {
+            background: #ead5e5;
+            color: #5b3b50;
+        }
+
+        .foto-placeholder {
+            margin: 25px auto;
+            padding: 45px 20px;
+            border: 2px dashed #d79ab9;
+            border-radius: 20px;
+            background: #fff8fc;
+            text-align: center;
         }
 
         @keyframes latido {
@@ -82,7 +138,10 @@
 
 <body>
 
-    <section class="pantalla">
+    <!-- PORTADA -->
+
+    <section id="portada" class="pantalla activa">
+
         <div class="portada">
 
             <div class="corazon">🤍</div>
@@ -92,24 +151,284 @@
                 de nuestro siempre
             </h1>
 
-            <p>
+            <p class="centro">
                 Una historia que comenzó de la manera más inesperada...
             </p>
 
-            <p>
+            <p class="centro">
                 Para Uriel, con todo mi amor. 🤍
             </p>
 
-            <button class="boton" onclick="alert('Nuestros recuerdos están por comenzar... ❤️')">
+            <button class="boton" onclick="mostrar('cartas')">
                 Abrir nuestros recuerdos ♡
             </button>
 
-            <p>
+            <p class="centro">
                 19.08.2025 – ∞
             </p>
 
         </div>
+
     </section>
+
+
+    <!-- MENÚ DE CARTAS -->
+
+    <section id="cartas" class="pantalla">
+
+        <div class="menu-cartas">
+
+            <div class="corazon">💌</div>
+
+            <h2>Nuetros recuerdos</h2>
+
+            <p class="centro">
+                Doce cartas para doce meses,
+                doce pedacitos de nuestra historia. ♥
+            </p>
+
+            <div class="cartas-grid">
+
+                <button class="carta-boton" onclick="abrirCarta(1)">
+                    📖<br>
+                    Había una vez...
+                </button>
+
+                <button class="carta-boton">
+                    🌙<br>
+                    Cuando me extrañes
+                </button>
+
+                <button class="carta-boton">
+                    👀<br>
+                    Cuando quieras saber qué veo cuando te miro
+                </button>
+
+                <button class="carta-boton">
+                    ❤️<br>
+                    Por qué te amo
+                </button>
+
+                <button class="carta-boton">
+                    🤍<br>
+                    Cuando hayamos tenido una pelea
+                </button>
+
+                <button class="carta-boton">
+                    🌷<br>
+                    Cuando pienses en nuestro futuro
+                </button>
+
+                <button class="carta-boton">
+                    💗<br>
+                    Cuando dudes de nosotros
+                </button>
+
+                <button class="carta-boton">
+                    🎶<br>
+                    Cuando escuches nuestras canciones
+                </button>
+
+                <button class="carta-boton">
+                    🌙🤍<br>
+                    Cuando no puedas dormir
+                </button>
+
+                <button class="carta-boton">
+                    🌷🤍<br>
+                    Para ti y las personas que amas
+                </button>
+
+                <button class="carta-boton">
+                    🏰<br>
+                    Nuestra batalla
+                </button>
+
+                <button class="carta-boton">
+                    📸❤️<br>
+                    Todos nuestros recuerdos
+                </button>
+
+            </div>
+
+            <button class="boton volver" onclick="mostrar('portada')">
+                ← Volver a nuestra historia
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CARTA 1 -->
+
+    <section id="carta1" class="pantalla">
+
+        <div class="carta">
+
+            <div class="corazon">📖</div>
+
+            <h2>Había una vez...</h2>
+
+            <p>
+                Una historia que no empezó con magia, sino con la suerte de encontrarnos,
+                que literalmente me da pena contarle a nuestros hijos que fue por un juego,
+                pero gracias a ese día que ambos entramos a jugar, Dios me dio la dicha de
+                conocerte y caminar a tu lado.
+            </p>
+
+            <p>
+                Todo empezó un día en el cual estaba aburrida y tenía los pensamientos algo
+                revueltos, no tenía nada que hacer y quería distraerme. En ese entonces estaba
+                de vacaciones, así que decidí entrar a jugar Roblox.
+            </p>
+
+            <p>
+                Era un nuevo juego que apenas estaba saliendo, 99 noches. Lo había jugado una
+                vez sola y quería intentar pasarlo. Cuando entré al juego estaba esperando
+                que un grupito hiciera su equipo para colarme y entrar con ellos, ya que yo
+                iba sola. Cuando veo un grupo que estaba creando sala, me metí y ahí estabas tú.
+            </p>
+
+            <p>
+                Lo primero que pensé es que eras de esos que se creían mucho por saber jugar
+                y que solo iba a fastidiar. Jugamos como 30 min y se terminaron saliendo todos
+                menos tú, y es cuando decidí mandarte solicitud. Lo raro fue que la aceptaras
+                porque no habíamos hablado en todo ese rato que jugamos.
+            </p>
+
+            <p>
+                Después te mandé mensaje diciendo que me iría a dormir porque en serio sí moría
+                de sueño. A la mañana siguiente te mandé mensaje en la tarde, si mi memoria no
+                falla, y te pregunté si no querías jugar.
+            </p>
+
+            <p>
+                En ese entonces aclaro que aún no me gustabas, solo quería pasar 99 noches y tú
+                eras pro. Ahora cuando jugamos te mueres cada que puedes JAJAJA.
+            </p>
+
+            <p>
+                Después te dije que jugáramos más tarde, respondiste que sí y ya no nos volvimos
+                a hablar hasta en la noche, donde me uní al juego y también tú, y es cuando
+                conocimos a René.
+            </p>
+
+            <p>
+                Ese día nos pasamos el Instagram por el juego. Tu perfil se me hizo intrigante
+                porque no tenías nada, eras súper misterioso y eso me llamó la atención.
+            </p>
+
+            <p>
+                Después de eso creamos el grupo de los Oyayitos, donde hablamos los 3 y
+                jugábamos Steal a Brainrot. Justo en ese juego empezamos a coquetear.
+            </p>
+
+            <p>
+                Empezamos a quedar un 9 de agosto, donde hablamos sobre nuestros miedos,
+                qué era lo que ambos buscamos en esto, y quedamos en conocernos más.
+            </p>
+
+            <p>
+                Y empezaron los apodos de nobina pizzanina, trulimera chachachá,
+                abina bananina, y recuerdo que cada que me decías así me enojaba.
+                Después ya me empezó a gustar.
+            </p>
+
+            <p>
+                Después empezó el nena, como hasta ahora me dices, y yo a ti noney,
+                porque me dieron celos cuando andábamos jugando y le dijiste a otra
+                de una manera linda. Y sí, me puse celosa. Puedo decirte que ahí mismo
+                supe que me gustabas.
+            </p>
+
+            <p>
+                Después, un 19 de agosto, justo como hoy, en la tardecita nos hicimos novios,
+                que debió haber sido 18 en la noche, pero me enojé y me fui a dormir jajaja.
+            </p>
+
+            <div class="foto-placeholder">
+                📸<br><br>
+                Aquí irá una foto especial de nuestros comienzos.
+            </div>
+
+            <p>
+                Amo lo que somos, Uri.
+            </p>
+
+            <p>
+                Hace un año, nuestros caminos se cruzaron y mi mundo entero se llenó de luz.
+                Desde ese instante supe que lo que nacía entre nosotros era algo único:
+                una profunda limerencia, una fascinación tan bonita y constante que hace
+                que mi corazón lata con más fuerza con solo pensar en ti.
+            </p>
+
+            <p>
+                Contigo he aprendido a amar verdaderamente desde el alma, poniendo todo mi
+                meraki en cada abrazo y en esta historia que construimos juntos día a día.
+            </p>
+
+            <p>
+                Te has convertido en mi ikigai, la razón más dulce que ilumina mis mañanas
+                y le da un sentido hermoso a mi vida, y también en mi querencia, ese refugio
+                cálido e insustituible donde mi espíritu descansa y al que siempre quiero
+                regresar, porque es en tus brazos donde realmente me siento en casa.
+            </p>
+
+            <p>
+                Agradezco infinitamente la belleza de nuestro vínculo, guiado por un amor
+                con esencia de hesed que es leal, paciente, incondicional y siempre dispuesto
+                a cuidar del otro sin importar nada.
+            </p>
+
+            <p>
+                Este primer aniversario es solo la primera página de un sentimiento sempiterno,
+                un amor que nació hace 365 días, pero que está destinado a durar para toda la vida.
+            </p>
+
+            <h2>Feliz primer año, mi amor 🤍</h2>
+
+            <p>
+                Gracias por hacer que amar sea tan bonito.
+            </p>
+
+            <p>
+                Con cariño,<br>
+                tu inefable amor ❤️
+            </p>
+
+            <button class="boton volver" onclick="mostrar('cartas')">
+                ← Volver a nuestras cartas
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        function mostrar(id) {
+
+            document.querySelectorAll('.pantalla').forEach(function(pantalla) {
+                pantalla.classList.remove('activa');
+            });
+
+            document.getElementById(id).classList.add('activa');
+
+            window.scrollTo(0, 0);
+        }
+
+
+        function abrirCarta(numero) {
+
+            if (numero === 1) {
+                mostrar('carta1');
+            }
+
+        }
+
+    </script>
 
 </body>
 </html>
