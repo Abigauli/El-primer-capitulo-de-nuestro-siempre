@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El primer capítulo de nuestro siempre ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Georgia, "Times New Roman", serif;
+            background: linear-gradient(135deg, #fff0f6, #f5e9ff);
+            color: #5b3b50;
+            overflow-x: hidden;
+        }
+
+        .pantalla {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .portada {
+            max-width: 650px;
+            padding: 45px 30px;
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 30px;
+            box-shadow: 0 15px 45px rgba(120, 70, 110, 0.18);
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .corazon {
+            font-size: 55px;
+            animation: latido 1.5s infinite;
+        }
+
+        .boton {
+            margin-top: 25px;
+            padding: 16px 28px;
+            border: none;
+            border-radius: 50px;
+            background: #b85c8b;
+            color: white;
+            font-family: inherit;
+            font-size: 17px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(120, 70, 110, 0.25);
+        }
+
+        .boton:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes latido {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="pantalla">
+        <div class="portada">
+
+            <div class="corazon">🤍</div>
+
+            <h1>
+                El primer capítulo<br>
+                de nuestro siempre
+            </h1>
+
+            <p>
+                Una historia que comenzó de la manera más inesperada...
+            </p>
+
+            <p>
+                Para Uriel, con todo mi amor. 🤍
+            </p>
+
+            <button class="boton" onclick="alert('Nuestros recuerdos están por comenzar... ❤️')">
+                Abrir nuestros recuerdos ♡
+            </button>
+
+            <p>
+                19.08.2025 – ∞
+            </p>
+
+        </div>
+    </section>
+
+</body>
+</html>
