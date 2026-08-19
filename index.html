@@ -2,43 +2,277 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Prueba ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El primer capítulo de nuestro siempre ❤️</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Georgia, serif;
-    background: #ffeaf3;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #5b3b50;
+    background: linear-gradient(135deg, #fff0f6, #f5e9ff);
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "♡ ✦ ♡ ✧ ♡ ✦ ♡";
+    position: fixed;
+    top: 18px;
+    left: 0;
+    width: 100%;
     text-align: center;
+    font-size: 20px;
+    color: rgba(170,105,145,.25);
+    letter-spacing: 12px;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .screen {
+    min-height: 100vh;
     display: none;
-    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 16px;
+    position: relative;
+    z-index: 1;
 }
 
 .screen.active {
-    display: block;
+    display: flex;
 }
 
 .card {
-    background: white;
-    padding: 40px;
+    width: min(900px, 96%);
+    background: rgba(255,255,255,.93);
     border-radius: 30px;
-    box-shadow: 0 15px 40px rgba(0,0,0,.15);
+    padding: 38px 28px;
+    box-shadow: 0 20px 60px rgba(100,60,90,.16);
+    text-align: center;
+    animation: aparecer .7s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: clamp(34px, 7vw, 62px);
+    color: #8c4d73;
+    margin: 15px 0 20px;
+}
+
+h2 {
+    font-size: clamp(28px, 5vw, 40px);
+    color: #9a547c;
+    margin: 15px 0 25px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.subtitle {
+    font-size: 20px;
+    font-style: italic;
+    color: #89657b;
+}
+
+.heart {
+    font-size: 64px;
+    animation: latido 1.5s infinite;
+}
+
+@keyframes latido {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
 }
 
 button {
-    padding: 15px 25px;
     border: none;
-    border-radius: 25px;
+    border-radius: 30px;
+    padding: 14px 23px;
+    margin: 8px;
+    font-size: 16px;
+    cursor: pointer;
     background: #b96d99;
     color: white;
-    font-size: 16px;
+    box-shadow: 0 8px 20px rgba(120,70,100,.2);
+    transition: .25s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+.secondary {
+    background: #ead6e5;
+    color: #704b62;
+}
+
+.letters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.letter-button {
+    min-height: 115px;
+    background: linear-gradient(135deg,#fff7fb,#f5e8f2);
+    color: #754c66;
+    border: 1px solid #ead0df;
+}
+
+.letter-button span {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.letter-content {
+    text-align: left;
+    max-height: 68vh;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.letter-content p {
+    white-space: pre-line;
+}
+
+.center {
+    text-align: center;
+}
+
+.placeholder {
+    margin: 25px auto;
+    padding: 30px;
+    border: 2px dashed #d8adc6;
+    border-radius: 22px;
+    background: #fff8fc;
+    color: #987087;
+}
+
+.photo-box {
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 22px;
+    background: rgba(255,255,255,.7);
+    border: 1px dashed #d6a8c0;
+    text-align: center;
+}
+
+.photo-box img {
+    max-width: 100%;
+    border-radius: 18px;
+}
+
+.music {
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.7);
+}
+
+.music a {
+    display: inline-block;
+    margin: 7px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    background: #b96d99;
+    color: white;
+    text-decoration: none;
+}
+
+.reason {
+    margin: 12px 0;
+    padding: 17px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.65);
+    cursor: pointer;
+}
+
+.reason-answer {
+    display: none;
+    margin-top: 10px;
+    padding: 12px;
+    line-height: 1.7;
+}
+
+.reason.open .reason-answer {
+    display: block;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 15px;
+}
+
+.gallery .photo-box {
+    min-height: 180px;
+}
+
+.game {
+    background: linear-gradient(135deg,#dff4ff,#ffe3e3);
+    border-radius: 28px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.tower {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.tower div {
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.7);
+}
+
+.battle-button {
+    background: #7b4f9d;
+}
+
+footer {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #9b788d;
+}
+
+@media(max-width:600px) {
+    .card {
+        padding: 28px 18px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+
+    .tower {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
@@ -46,35 +280,693 @@ button {
 <body>
 
 <section id="inicio" class="screen active">
-    <div class="card">
-        <h1>El primer capítulo de nuestro siempre ❤️</h1>
+<div class="card">
 
-        <button onclick="mostrar('cartas')">
-            Abrir nuestros recuerdos ♡
-        </button>
-    </div>
+<div class="heart">♡</div>
+
+<h1>El primer capítulo<br>de nuestro siempre</h1>
+
+<p class="subtitle">
+Una historia que comenzó de la manera más inesperada...
+</p>
+
+<p>
+Para Uriel,<br>
+con todo mi amor. 🤍
+</p>
+
+<button onclick="mostrar('cartas')">
+Abrir nuestros recuerdos ♡
+</button>
+
+<footer>
+19.08.2025 — ∞
+</footer>
+
+</div>
 </section>
+
 
 <section id="cartas" class="screen">
-    <div class="card">
-        <h1>💌 Nuestros recuerdos</h1>
+<div class="card">
 
-        <p>¡Funcionó! Ya estamos dentro de nuestras cartas. ❤️</p>
+<h2>💌 Nuestros recuerdos</h2>
 
-        <button onclick="mostrar('inicio')">
-            ← Volver
-        </button>
-    </div>
+<p>
+Doce cartas para doce meses,
+doce pedacitos de nuestra historia. 🤍
+</p>
+
+<div class="letters">
+
+<button class="letter-button" onclick="abrirCarta(1)">
+<span>📖</span>
+Había una vez...
+</button>
+
+<button class="letter-button" onclick="abrirCarta(2)">
+<span>🌙</span>
+Cuando me extrañes
+</button>
+
+<button class="letter-button" onclick="abrirCarta(3)">
+<span>👀</span>
+Cuando quieras saber qué veo cuando te miro
+</button>
+
+<button class="letter-button" onclick="abrirCarta(4)">
+<span>❤️</span>
+Por qué te amo
+</button>
+
+<button class="letter-button" onclick="abrirCarta(5)">
+<span>🤍</span>
+Cuando hayamos tenido una pelea
+</button>
+
+<button class="letter-button" onclick="abrirCarta(6)">
+<span>🌌</span>
+Cuando pienses en nuestro futuro
+</button>
+
+<button class="letter-button" onclick="abrirCarta(7)">
+<span>🤍</span>
+Cuando dudes de nosotros
+</button>
+
+<button class="letter-button" onclick="abrirCarta(8)">
+<span>🎶</span>
+Cuando escuches nuestras canciones
+</button>
+
+<button class="letter-button" onclick="abrirCarta(9)">
+<span>🌙</span>
+Cuando no puedas dormir
+</button>
+
+<button class="letter-button" onclick="abrirCarta(10)">
+<span>🌷</span>
+Para ti y las personas que amas
+</button>
+
+<button class="letter-button" onclick="abrirCarta(11)">
+<span>🏰</span>
+La batalla por nuestro siempre
+</button>
+
+<button class="letter-button" onclick="abrirCarta(12)">
+<span>📸</span>
+Nuestros recuerdos
+</button>
+
+</div>
+
+<br>
+
+<button class="secondary" onclick="mostrar('inicio')">
+← Volver
+</button>
+
+</div>
 </section>
 
+
+<section id="carta" class="screen">
+<div class="card">
+
+<div id="contenidoCarta" class="letter-content"></div>
+
+<button class="secondary" onclick="mostrar('cartas')">
+← Volver a nuestras cartas
+</button>
+
+</div>
+</section>
+
+
 <script>
+
+const cartas = {
+
+1: `
+<h2>📖 Había una vez...</h2>
+
+<p>
+Una historia que no empezó con magia,
+sino con la suerte de encontrarnos.
+
+Todo comenzó aquel día en Roblox,
+cuando una niña entró a jugar 99 Noches
+sin imaginar que terminaría encontrando
+a una de las personas más importantes
+de su vida.
+
+A veces las historias más bonitas
+comienzan de la manera más inesperada.
+
+Y esta...
+es la nuestra. ❤️
+</p>
+
+<div class="photo-box">
+📸 FOTO DE NUESTRO COMIENZO
+<br><br>
+Aquí puedes agregar la foto.
+</div>
+`,
+
+2: `
+<h2>🌙 Cuando me extrañes...</h2>
+
+<p>
+Si estás leyendo esto porque me extrañas,
+primero quiero que recuerdes que aunque ahora
+mismo no esté ahí contigo, hay alguien que te
+está pensando y que te ama muchísimo.
+
+Ojalá pudiera estar a tu lado en este momento
+para abrazarte, hacerte cariñitos y decirte
+que todo estará bien.
+
+Sé que la distancia a veces pesa y que hay días
+en los que solamente quisiéramos tener al otro cerca.
+
+Pero quiero que recuerdes que la distancia no cambia
+todo lo que sentimos.
+
+No borra nuestras conversaciones,
+nuestras llamadas, nuestras risas,
+nuestros momentos juntos ni todos los recuerdos
+que hemos construido.
+
+Cuando me extrañes, piensa en nosotros.
+
+En aquel día en el que nos conocimos,
+sin saber todo lo que vendría después.
+
+Piensa en nuestras risas,
+en nuestros apodos,
+en nuestras llamadas
+y en esas cosas que solamente los dos entendemos.
+
+Piensa también en todo lo bonito que todavía
+nos falta vivir:
+
+los lugares que conoceremos,
+las fotos que nos tomaremos,
+las historias que algún día contaremos
+y todas esas noches en las que ya no tendremos
+que extrañarnos porque estaremos juntos.
+
+Y si algún día la distancia se siente demasiado grande,
+recuerda que solamente es una parte de nuestra historia,
+no el final de ella.
+
+Si pudiera estar ahí contigo ahora mismo,
+probablemente terminaríamos hablando de cualquier tontería
+hasta que alguno de los dos se quedara dormido,
+como tantas veces hemos hecho.
+
+Así que cuando me extrañes,
+imagina que estoy ahí contigo,
+abrazándote muy fuerte y diciéndote bajito:
+</p>
+
+<p class="center">
+<strong>
+“No estás solo, Uri. <br>
+Yo también te extraño. <br>
+Y te amo muchísimo.” 💕
+</strong>
+</p>
+
+<p>
+Y recuerda que cada día que pasa
+es un día menos para volver a vernos.
+</p>
+
+<p class="center">
+Con amor,<br>
+tu novia 💕
+</p>
+
+<div class="photo-box">
+🌙 Aquí puedes agregar una foto especial de ustedes.
+</div>
+`,
+
+3: `
+<h2>👀 Cuando quieras saber qué veo cuando te miro...</h2>
+
+<p>
+Cuando te miro, no veo solamente tu cara.
+
+Veo todas esas pequeñas cosas que quizá tú ni siquiera
+te das cuenta de que haces.
+
+Veo tus muecas,
+tus gestos,
+tus ocurrencias
+y esa forma tan tuya de hacerme sonreír.
+
+Veo al niño que amo,
+al compañero de mis días
+y a la persona con la que quiero seguir
+coleccionando recuerdos.
+
+Y quizá por eso me gusta tanto mirarte.
+
+Porque cada vez encuentro algo nuevo
+que amar de ti. 🤍
+</p>
+
+<div class="photo-box">
+📸 AQUÍ VA UNA FOTO DE URI
+</div>
+`,
+
+4: `
+<h2>❤️ Por qué te amo...</h2>
+
+<p>
+Te amo por muchísimas razones.
+
+Te amo por cómo me haces sentir.
+
+Por las risas.
+
+Por las conversaciones que parecen no tener final.
+
+Por los momentos pequeños que terminan
+convirtiéndose en recuerdos enormes.
+
+Te amo por tu forma de ser,
+por tus ocurrencias,
+por tus abrazos
+y por todo aquello que hace que seas tú.
+
+Pero sobre todo,
+te amo porque contigo puedo ser yo.
+
+Y entre millones de personas,
+te elegiría a ti. ❤️
+</p>
+
+<div class="placeholder">
+❤️ Esta carta puede crecer con todas las razones
+por las que quieres a Uriel.
+</div>
+`,
+
+5: `
+<h2>🤍 Cuando hayamos tenido una pelea</h2>
+
+<p>
+Si algún día estamos enojados,
+quiero que recuerdes algo:
+
+Somos nosotros contra el problema,
+no tú contra mí.
+
+Una pelea no borra todo lo bonito.
+
+No borra nuestras risas,
+nuestros recuerdos,
+nuestros abrazos
+ni todo lo que hemos construido.
+
+Podemos estar molestos,
+podemos necesitar espacio
+y podemos equivocarnos.
+
+Pero siempre quiero que encontremos
+el camino de regreso.
+
+Porque prefiero solucionar las cosas contigo
+que tener la razón sin ti. 🤍
+</p>
+
+<div class="placeholder">
+🤍 Recuerda:
+hablar, escuchar, pedir perdón y volver a abrazarnos.
+</div>
+`,
+
+6: `
+<h2>🌌 Cuando pienses en nuestro futuro</h2>
+
+<p>
+Cuando pienso en nuestro futuro,
+me imagino muchísimas cosas.
+
+Lugares que todavía no conocemos.
+
+Viajes.
+
+Fotos.
+
+Noches juntos.
+
+Una vida llena de pequeñas aventuras.
+
+Y también imagino a Neythan,
+creciendo rodeado de amor
+y formando parte de todos esos recuerdos.
+
+No sé exactamente cómo será el futuro.
+
+Pero sí sé con quién quiero descubrirlo.
+
+Contigo. 🤍
+</p>
+
+<div class="photo-box">
+📸 AQUÍ VA LA FOTO DE USTEDES TRES
+</div>
+
+<p class="center">
+Nuestro futuro todavía está escribiendo sus primeras páginas. ✨
+</p>
+`,
+
+7: `
+<h2>🤍 Cuando dudes de nosotros</h2>
+
+<p>
+Si alguna vez dudas,
+vuelve a recordar el principio.
+
+Recuerda cómo empezó todo.
+
+Recuerda las primeras conversaciones,
+las primeras risas,
+los primeros recuerdos.
+
+Recuerda todo lo que hemos superado.
+
+No quiero que pienses que una historia bonita
+es una historia que nunca tiene problemas.
+
+Quiero que recuerdes que una historia bonita
+es aquella en la que dos personas siguen
+eligiéndose incluso cuando las cosas no son perfectas.
+
+Y yo te elegiría otra vez. 🤍
+</p>
+`,
+
+8: `
+<h2>🎶 Cuando escuches nuestras canciones</h2>
+
+<p>
+Hay canciones que dejan de ser solamente canciones.
+
+Se convierten en personas,
+lugares,
+momentos
+y recuerdos.
+
+Aquí puedes colocar nuestros enlaces
+de Spotify. 🎶
+</p>
+
+<div class="music">
+
+<a href="#" target="_blank">Contigo — Karol G</a>
+
+<a href="#" target="_blank">Es verdad — Daniel, me estás matando</a>
+
+<a href="#" target="_blank">Patadas de ahogado — HUMBE & LATIN MAFIA</a>
+
+<a href="#" target="_blank">Neo, neo — LATIN MAFIA & rusowsky</a>
+
+<a href="#" target="_blank">Y como te digo que — LATIN MAFIA</a>
+
+<a href="#" target="_blank">Te estoy correteando — LATIN MAFIA</a>
+
+<a href="#" target="_blank">Veinte — HUMBE</a>
+
+<a href="#" target="_blank">Harry Stamper — HUMBE</a>
+
+<a href="#" target="_blank">Tu manta — Milo J</a>
+
+<a href="#" target="_blank">Ojalá — Milo J & Bhavi</a>
+
+<a href="#" target="_blank">Náufragos — Rauw Alejandro</a>
+
+<a href="#" target="_blank">Amar de nuevo — Rauw Alejandro</a>
+
+</div>
+
+<p class="small center">
+Reemplaza cada href="#" por el enlace de Spotify correspondiente.
+</p>
+`,
+
+9: `
+<h2>🌙 Cuando no puedas dormir</h2>
+
+<p>
+Si alguna noche no puedes dormir,
+quiero que recuerdes que en algún lugar
+hay alguien que te piensa.
+
+Imagíname abrazándote.
+
+Imagíname diciéndote que cierres los ojos,
+que descanses
+y que mañana será otro día.
+
+Y si todavía no puedes dormir,
+piensa en alguna de nuestras conversaciones
+que terminaron con alguno de los dos
+quedándose dormido.
+
+Quizá eso consiga sacarte una sonrisa. 🌙
+</p>
+
+<div class="placeholder">
+✨ 🌙 ✦ ✧ ⭐ ✦ 🌙 ✨
+<br><br>
+Buenas noches, Uri.
+</div>
+`,
+
+10: `
+<h2>🌷 Para ti y las personas que amas</h2>
+
+<p>
+Esta carta también es para las personas
+que forman parte de tu vida.
+
+Para tu mamá.
+
+Para tu abuelita.
+
+Para tu abuelito.
+
+Para tu hermanita.
+
+Porque querer a alguien también significa
+querer las cosas y las personas
+que son importantes para esa persona.
+
+Deseo que siempre estén rodeados de amor,
+salud, momentos bonitos
+y muchos recuerdos juntos.
+
+Y deseo que tú nunca olvides
+lo importante que eres para todos ellos. 🌷
+</p>
+
+<div class="photo-box">
+🖼️ AQUÍ VA LA IMAGEN ESPECIAL DE ESTA CARTA
+</div>
+`,
+
+11: `
+<h2>🏰 La batalla por nuestro siempre</h2>
+
+<p>
+Bienvenido a nuestra batalla.
+
+Pero esta vez el enemigo no es otro jugador.
+
+El enemigo es...
+
+<strong>LA DISTANCIA.</strong> 🌫️
+</p>
+
+<div class="game">
+
+<div class="tower">
+
+<div>
+<h3>💙 Torre de Abigail</h3>
+<p>
+👑 Abigail<br>
+💗 Amor<br>
+✨ Recuerdos
+</p>
+</div>
+
+<div>
+<h3>❤️ Torre de Uriel</h3>
+<p>
+👑 Uriel<br>
+⚔️ Valentía<br>
+🔥 Amor
+</p>
+</div>
+
+</div>
+
+<h3>⚔️ Nuestras cartas</h3>
+
+<p>
+💗 Mini P.E.K.K.A.<br>
+⚔️ Valquiria<br>
+🎯 Duende Lanzadardos<br>
+🐗 Montapuercos
+</p>
+
+<button class="battle-button" onclick="jugarBatalla()">
+⚔️ ¡Atacar a la distancia!
+</button>
+
+<div id="resultadoBatalla" class="placeholder">
+Aquí comenzará nuestra batalla...
+</div>
+
+</div>
+
+<p>
+Y al final, después de todas las batallas,
+queda una sola verdad:
+</p>
+
+<p class="center">
+<strong>
+La distancia podrá ser nuestro enemigo,
+pero nosotros seguimos siendo el mismo equipo. ❤️
+</strong>
+</p>
+`,
+
+12: `
+<h2>📸 Nuestros recuerdos</h2>
+
+<p>
+Después de todas estas palabras...
+quedaron los recuerdos. 🤍
+</p>
+
+<div class="gallery">
+
+<div class="photo-box">
+📸 FOTO 1
+<br><br>
+Agrega aquí nuestra primera foto.
+</div>
+
+<div class="photo-box">
+📸 FOTO 2
+<br><br>
+Agrega aquí otra foto.
+</div>
+
+<div class="photo-box">
+📸 FOTO 3
+<br><br>
+Agrega aquí otra foto.
+</div>
+
+<div class="photo-box">
+📸 FOTO 4
+<br><br>
+Agrega aquí otra foto.
+</div>
+
+<div class="photo-box">
+📸 FOTO 5
+<br><br>
+Agrega aquí otra foto.
+</div>
+
+<div class="photo-box">
+📸 FOTO 6
+<br><br>
+Agrega aquí otra foto.
+</div>
+
+</div>
+
+<p>
+Y aquí iremos guardando todas esas pequeñas
+pruebas de que nuestra historia realmente ocurrió.
+</p>
+
+<h2>
+Nuestro siempre todavía está comenzando. 🤍
+</h2>
+
+<p class="center">
+19.08.2025 — ∞
+</p>
+`
+
+};
+
+
 function mostrar(id) {
-    document.querySelectorAll('.screen').forEach(function(screen) {
-        screen.classList.remove('active');
+
+    document.querySelectorAll(".screen").forEach(function(screen) {
+        screen.classList.remove("active");
     });
 
-    document.getElementById(id).classList.add('active');
+    document.getElementById(id).classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
+
+
+function abrirCarta(numero) {
+
+    document.getElementById("contenidoCarta").innerHTML = cartas[numero];
+
+    mostrar("carta");
+}
+
+
+function jugarBatalla() {
+
+    const resultado = document.getElementById("resultadoBatalla");
+
+    resultado.innerHTML = `
+    ⚔️ ¡ATAQUE ACTIVADO! ⚔️
+    <br><br>
+    Abigail lanza su Mini P.E.K.K.A. 💗
+    <br>
+    Uriel responde con la Valquiria ⚔️
+    <br><br>
+    💥 ¡BOOM!
+    <br><br>
+    La distancia perdió una torre.
+    <br><br>
+    ❤️ Pero el verdadero ganador...
+    <br>
+    <strong>somos nosotros.</strong>
+    `;
+}
+
+
+function Razon(elemento) {
+    elemento.classList.toggle("open");
+}
+
 </script>
 
 </body>
